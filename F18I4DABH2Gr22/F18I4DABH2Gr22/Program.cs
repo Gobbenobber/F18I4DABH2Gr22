@@ -10,7 +10,7 @@ namespace F18I4DABH2Gr22
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Gobbenobber was here");
+            Console.WriteLine("JONAS IS RACSST");
         }
     }
 }
