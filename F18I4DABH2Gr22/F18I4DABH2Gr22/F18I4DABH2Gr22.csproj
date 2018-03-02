@@ -42,8 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adresse.cs" />
+    <Compile Include="By.cs" />
+    <Compile Include="ErTilknyttet.cs" />
+    <Compile Include="Kontakt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Telefonnummer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
