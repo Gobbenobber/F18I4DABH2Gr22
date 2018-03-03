@@ -6,27 +6,17 @@ namespace F18I4DABH2Gr22
     {
         private readonly List<ErTilknyttet> _tilknyttedeKontakter = new List<ErTilknyttet>();
 
-        public List<Kontakt> Kontakter
-        {
-            get
-            {
-                var kontakter = new List<Kontakt>();
-                foreach (var kontakt in _tilknyttedeKontakter)
-                {
-                    kontakter.Add(kontakt.Kontakt);
-                }
-
-                return kontakter;
-            }
-        }
+        public IReadOnlyList<ErTilknyttet> TilknyttedeKontakter => _tilknyttedeKontakter;
 
         public string Vejnavn { get; }
         public int Husnummer { get; }
+        public By By { get; }
 
-        public Adresse(string vejnavn, int husnummer)
+        public Adresse(string vejnavn, int husnummer, By by)
         {
             Vejnavn = vejnavn;
             Husnummer = husnummer;
+            By = by;
         }
 
         public void TilføjTilknytning(ErTilknyttet tilknyttet)

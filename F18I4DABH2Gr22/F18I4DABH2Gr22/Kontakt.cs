@@ -7,18 +7,9 @@ namespace F18I4DABH2Gr22
         public string Fornavn { get; private set; }
         public string Mellemnavn { get; private set; }
         public string Efternavn { get; private set; }
-        public List<Adresse> Adresser {
-            get
-            {
-                var adresser = new List<Adresse>();
-                foreach (var erTilknyttet in _tilknyttedeAdresser)
-                {
-                    adresser.Add(erTilknyttet.Adresse);
-                }
 
-                return adresser;
-            }
-        }
+        public IReadOnlyList<ErTilknyttet> TilknyttedeAdresser => _tilknyttedeAdresser;
+
         private readonly List<ErTilknyttet> _tilknyttedeAdresser = new List<ErTilknyttet>();
         public List<Telefonnummer> Telefonnumre { get; } = new List<Telefonnummer>();
         public string Email { get; set; }
