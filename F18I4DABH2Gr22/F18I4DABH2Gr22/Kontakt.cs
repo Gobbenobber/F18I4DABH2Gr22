@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 namespace F18I4DABH2Gr22
 {
@@ -32,5 +33,24 @@ namespace F18I4DABH2Gr22
             adresse.TilføjTilknytning(tilknytning);       
         }
 
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine("=======================");
+            sb.AppendLine($"{Efternavn}, {Fornavn} {Mellemnavn}:");
+            if (Email != ""){ sb.AppendLine($"Email: {Email}");}
+            sb.AppendLine("\nTelefonnumre:");
+            foreach (var telefonnummer in Telefonnumre)
+            {
+                sb.AppendLine($"{telefonnummer.Brug}: {telefonnummer.Nummer}" + (telefonnummer.Teleselskab == "" ? "" : $" - {telefonnummer.Teleselskab}"));
+            }
+            sb.AppendLine("\nAdresser:");
+            foreach (var erTilknyttet in _tilknyttedeAdresser)
+            {
+                sb.AppendLine($"{erTilknyttet.Type}:\n{erTilknyttet.Adresse}");
+            }
+            sb.Append("=======================");
+            return sb.ToString();
+        }
     }
 }

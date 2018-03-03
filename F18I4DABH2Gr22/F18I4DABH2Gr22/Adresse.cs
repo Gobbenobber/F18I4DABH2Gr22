@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 namespace F18I4DABH2Gr22
 {
@@ -22,6 +23,17 @@ namespace F18I4DABH2Gr22
         public void TilføjTilknytning(ErTilknyttet tilknyttet)
         {
             _tilknyttedeKontakter.Add(tilknyttet);
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine("----------");
+            sb.AppendLine($"{Vejnavn} {Husnummer}");
+            sb.AppendLine($"{By.PostNr} {By.Navn}");
+            sb.AppendLine($"{By.Land}");
+            sb.Append("----------");
+            return sb.ToString();
         }
     }
 }
