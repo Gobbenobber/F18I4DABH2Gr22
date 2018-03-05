@@ -10,7 +10,6 @@ namespace F18I4DABH2Gr22
         public string Efternavn { get; private set; }
 
         public IReadOnlyList<ErTilknyttet> TilknyttedeAdresser => _tilknyttedeAdresser;
-
         private readonly List<ErTilknyttet> _tilknyttedeAdresser = new List<ErTilknyttet>();
         public List<Telefonnummer> Telefonnumre { get; } = new List<Telefonnummer>();
         public string Email { get; set; }

@@ -19,9 +19,9 @@ namespace F18I4DABH2Gr22
                 PostNr = "8000"
             };
 
-            Adresse adresse = new Adresse("Nørregade", 44, by);
+            Adresse adresse = new Adresse("Nørregade", 42, by);
 
-            Kontakt kontakt = new Kontakt("Patrick", "Gobbenobber", "Budhoo", adresse, new Telefonnummer("28511189", "Privat"));
+            Kontakt kontakt = new Kontakt("Patrick", "Gobbenobber", "Budhoo", adresse, new Telefonnummer("28511189", "Privat", "TDC"));
 
             Console.WriteLine(kontakt);
 
