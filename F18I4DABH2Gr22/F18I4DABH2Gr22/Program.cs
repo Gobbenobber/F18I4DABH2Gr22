@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace F18I4DABH2Gr22
+namespace HandIn21
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("JONAS IS RACSST");
 
             By by = new By
             {
@@ -21,7 +16,7 @@ namespace F18I4DABH2Gr22
 
             Adresse adresse = new Adresse("Nørregade", 44, by);
 
-            Kontakt kontakt = new Kontakt("Patrick", "Gobbenobber", "Budhoo", adresse, new Telefonnummer("28511189", "Privat"));
+            Kontakt kontakt = new Kontakt("Patrick", "Gobbenobber", "Budhoo", adresse, new Telefonnummer("28511189", "Privat", "YouSee"), "gobbenobber@gmail.com");
 
             Console.WriteLine(kontakt);
 

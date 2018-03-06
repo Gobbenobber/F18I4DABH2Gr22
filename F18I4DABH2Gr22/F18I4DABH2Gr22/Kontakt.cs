@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace F18I4DABH2Gr22
+namespace HandIn21
 {
     public class Kontakt
     {

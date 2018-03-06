@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0FD3DEBD-E518-49D3-8256-A5FD2BC76838}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>F18I4DABH2Gr22</RootNamespace>
-    <AssemblyName>F18I4DABH2Gr22</AssemblyName>
+    <RootNamespace>HandIn21</RootNamespace>
+    <AssemblyName>HandIn2.1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
