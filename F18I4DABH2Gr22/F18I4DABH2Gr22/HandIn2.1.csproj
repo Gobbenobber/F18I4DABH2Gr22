@@ -54,7 +54,6 @@
     <Compile Include="Domain\ErTilknyttet.cs" />
     <Compile Include="Domain\Kontakt.cs" />
     <Compile Include="Interfaces\IAdresseRepository.cs" />
-    <Compile Include="Interfaces\IByRepository.cs" />
     <Compile Include="Interfaces\IKontaktRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Program.cs" />
