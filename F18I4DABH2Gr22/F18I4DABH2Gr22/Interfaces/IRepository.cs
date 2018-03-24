@@ -16,7 +16,7 @@ namespace HandIn21.Interfaces
     /// <typeparam name="TEntity"></typeparam>
     public interface IRepository<TEntity> where TEntity : class
     {
-        TEntity Get(int id);
+        TEntity Get(object[] keyObjects);
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 
