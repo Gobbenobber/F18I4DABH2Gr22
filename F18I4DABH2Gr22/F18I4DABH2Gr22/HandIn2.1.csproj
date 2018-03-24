@@ -47,18 +47,16 @@
     <Compile Include="Domain\ErTilknyttet.cs" />
     <Compile Include="Domain\Kontakt.cs" />
     <Compile Include="Interfaces\IAdresseRepository.cs" />
-    <Compile Include="Interfaces\IByRepository.cs" />
     <Compile Include="Interfaces\IKontaktRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\Telefonnummer.cs" />
+    <Compile Include="Repositories\KontaktRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

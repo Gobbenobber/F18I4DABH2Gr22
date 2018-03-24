@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HandIn21.Interfaces
+namespace HandIn21.Repositories
 {
-    interface IByRepository : IRepository<By>
+    class KontaktRepository
     {
     }
 }
