@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 namespace HandIn21.Interfaces
 {
     /// <summary>
-    /// This was taken from the material 
+    /// This was taken from the material handed out in lecture:
+    /// L5 Opsamling Modellering, særlig DDD Domænemodellering > Fredag 
+    /// Originally by:
+    /// Mosh Hamedani
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
     public interface IRepository<TEntity> where TEntity : class
