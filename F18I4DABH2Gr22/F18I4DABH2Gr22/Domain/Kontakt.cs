@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace HandIn21
@@ -12,10 +13,15 @@ namespace HandIn21
         public string Fornavn { get; private set; }
         public string Mellemnavn { get; private set; }
         public string Efternavn { get; private set; }
+        
+        public static Expression<Func<Kontakt, ICollection<ErTilknyttet>>> TilknytMapping
+        {
+            get { return c => c._tilknyttedeAdresser; }
+        }
 
         public virtual IReadOnlyList<ErTilknyttet> TilknyttedeAdresser => _tilknyttedeAdresser;
-        private readonly List<ErTilknyttet> _tilknyttedeAdresser = new List<ErTilknyttet>();
-        public List<Telefonnummer> Telefonnumre { get; } = new List<Telefonnummer>();
+        public virtual List<ErTilknyttet> _tilknyttedeAdresser { get; } = new List<ErTilknyttet>();
+        public virtual List<Telefonnummer> Telefonnumre { get; } = new List<Telefonnummer>();
         public string Email { get; set; }
 
         public Kontakt(string fornavn, string mellemnavn, string efternavn, Adresse primærAdresse, Telefonnummer telefonnummer,
@@ -29,6 +35,11 @@ namespace HandIn21
             Email = email;
             Telefonnumre.Add(telefonnummer);
             TilføjAdresse(adresseType, primærAdresse);
+        }
+
+        public Kontakt()
+        {
+
         }
 
         public void TilføjAdresse(string type, Adresse adresse)

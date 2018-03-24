@@ -28,6 +28,11 @@ namespace HandIn21
             By = by;
         }
 
+        public Adresse()
+        {
+
+        }
+
         public void TilføjTilknytning(ErTilknyttet tilknyttet)
         {
             _tilknyttedeKontakter.Add(tilknyttet);

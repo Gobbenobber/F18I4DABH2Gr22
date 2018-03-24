@@ -34,21 +34,12 @@ namespace F18I4DABH2Gr22
 
             using (var pikfuck = new UnitOfWork(new KartotekContext()))
             {
-                By by = new By
+                var patten = pikfuck.Kontakter.SingleOrDefault(gob => gob.Fornavn == "Patrick");
+
+                if (patten != null)
                 {
-                    Land = "Danmark",
-                    Navn = "Århus C",
-                    PostNr = "8000"
-                };
-
-                Adresse adresse = new Adresse("Nørregade", 42, by);
-
-                Kontakt kontakt = new Kontakt("Patrick", "Gobbenobber", "Budhoo", adresse, new Telefonnummer(28511189, "Privat", "TDC"));
-
-                pikfuck.Kontakter.Add(kontakt);
-                pikfuck.Complete();
-
-                
+                    Console.WriteLine(patten);
+                }
 
             }
 

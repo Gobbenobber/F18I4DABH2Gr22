@@ -44,6 +44,11 @@ namespace HandIn21
             Adresse = adresse;
         }
 
+        public ErTilknyttet()
+        {
+
+        }
+
         public static bool operator == (ErTilknyttet l, ErTilknyttet r)
         {
             return (l.Adresse == r.Adresse && l.Kontakt == r.Kontakt);
