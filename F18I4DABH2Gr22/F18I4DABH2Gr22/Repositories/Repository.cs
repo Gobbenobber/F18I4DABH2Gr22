@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace HandIn21.Repositories
 {
-    class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         protected readonly DbContext _context;
 

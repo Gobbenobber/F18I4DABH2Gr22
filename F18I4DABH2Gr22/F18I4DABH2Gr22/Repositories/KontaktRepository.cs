@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HandIn21.Interfaces;
 
 namespace HandIn21.Repositories
 {
-    class KontaktRepository
+    public class KontaktRepository : Repository<Kontakt>, IKontaktRepository
     {
+        public KontaktRepository(DbContext context) : base(context)
+        {
+        }
+
+        public IEnumerable<ErTilknyttet> GetKontakterWithAddresse(Adresse adresse)
+        {
+            return _context.Set<ErTilknyttet>().Where(t => t.Adresse.Equals(adresse)).ToList();
+        }
     }
 }
