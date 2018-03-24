@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201803241622255_UpdateAdresse.Designer.cs">
       <DependentUpon>201803241622255_UpdateAdresse.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803241632099_UpdateKontakt.cs" />
+    <Compile Include="Migrations\201803241632099_UpdateKontakt.Designer.cs">
+      <DependentUpon>201803241632099_UpdateKontakt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803241622255_UpdateAdresse.resx">
       <DependentUpon>201803241622255_UpdateAdresse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803241632099_UpdateKontakt.resx">
+      <DependentUpon>201803241632099_UpdateKontakt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

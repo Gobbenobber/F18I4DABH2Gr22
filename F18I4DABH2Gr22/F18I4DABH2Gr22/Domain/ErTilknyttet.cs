@@ -27,11 +27,14 @@ namespace HandIn21
             }
         }
 
-        [Key, Column(Order = 0)]
+        [Key]
+        [Column(Order = 0)]
         public Kontakt Kontakt { get; set; }
-        [Key, Column(Order = 1)]
+        [Key]
+        [Column(Order = 1)]
         public Adresse Adresse { get; set; }
-        [Key, Column(Order = 2)]
+        [Key]
+        [Column(Order = 2)]
         public string Type { get; set; }
 
         public ErTilknyttet(string type, Kontakt kontakt, Adresse adresse)

@@ -5,9 +5,11 @@ namespace HandIn21
 {
     public class By
     {
-        [Key, Column(Order = 0)]
+        [Key]
+        [Column(Order = 0)]
         public string Land { get; set; }
-        [Key, Column(Order = 1)]
+        [Key]
+        [Column(Order = 1)]
         public string PostNr { get; set; }
         public string Navn { get; set; }
     }
