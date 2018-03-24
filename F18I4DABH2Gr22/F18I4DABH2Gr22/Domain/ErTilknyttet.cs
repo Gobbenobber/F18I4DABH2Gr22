@@ -1,4 +1,8 @@
-﻿namespace HandIn21
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace HandIn21
 {
     public class ErTilknyttet
     {
@@ -23,8 +27,11 @@
             }
         }
 
+        [Key, Column(Order = 0)]
         public Kontakt Kontakt { get; }
+        [Key, Column(Order = 1)]
         public Adresse Adresse { get; }
+        [Key, Column(Order = 2)]
         public string Type { get; set; }
 
         public ErTilknyttet(string type, Kontakt kontakt, Adresse adresse)

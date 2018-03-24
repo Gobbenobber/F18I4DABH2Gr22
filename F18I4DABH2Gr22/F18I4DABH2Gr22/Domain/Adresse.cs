@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace HandIn21
@@ -9,8 +11,11 @@ namespace HandIn21
 
         public IReadOnlyList<ErTilknyttet> TilknyttedeKontakter => _tilknyttedeKontakter;
 
+        [Key, Column(Order = 0)]
         public string Vejnavn { get; }
+        [Key, Column(Order = 1)]
         public int Husnummer { get; }
+        [Key, Column(Order = 2)]
         public By By { get; }
 
         public Adresse(string vejnavn, int husnummer, By by)
