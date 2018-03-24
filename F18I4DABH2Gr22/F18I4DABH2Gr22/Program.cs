@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HandIn21;
 
 namespace F18I4DABH2Gr22
 {
@@ -21,7 +22,7 @@ namespace F18I4DABH2Gr22
 
             Adresse adresse = new Adresse("Nørregade", 42, by);
 
-            Kontakt kontakt = new Kontakt("Patrick", "Gobbenobber", "Budhoo", adresse, new Telefonnummer("28511189", "Privat", "TDC"));
+            Kontakt kontakt = new Kontakt("Patrick", "Gobbenobber", "Budhoo", adresse, new Telefonnummer(28511189, "Privat", "TDC"));
 
             Console.WriteLine(kontakt);
 
