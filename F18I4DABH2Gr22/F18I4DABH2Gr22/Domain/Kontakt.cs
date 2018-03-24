@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace HandIn21
@@ -18,6 +19,8 @@ namespace HandIn21
         public Kontakt(string fornavn, string mellemnavn, string efternavn, Adresse primærAdresse, Telefonnummer telefonnummer,
             string email = "", string adresseType = "Primær Adresse")
         {
+            if (fornavn == null || efternavn == null || primærAdresse == null || telefonnummer == null)
+                throw new ArgumentNullException();
             Fornavn = fornavn;
             Mellemnavn = mellemnavn;
             Efternavn = efternavn;
