@@ -11,12 +11,15 @@ namespace HandIn21
 
         public IReadOnlyList<ErTilknyttet> TilknyttedeKontakter => _tilknyttedeKontakter;
 
-        [Key, Column(Order = 0)]
-        public string Vejnavn { get; }
-        [Key, Column(Order = 1)]
-        public int Husnummer { get; }
-        [Key, Column(Order = 2)]
-        public By By { get; }
+        [Key]
+        [Column(Order = 0)]
+        public string Vejnavn { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        public int Husnummer { get; set; }
+        [Key]
+        [Column(Order = 2)]
+        public By By { get; set; }
 
         public Adresse(string vejnavn, int husnummer, By by)
         {

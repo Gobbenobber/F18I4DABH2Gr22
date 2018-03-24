@@ -28,9 +28,9 @@ namespace HandIn21
         }
 
         [Key, Column(Order = 0)]
-        public Kontakt Kontakt { get; }
+        public Kontakt Kontakt { get; set; }
         [Key, Column(Order = 1)]
-        public Adresse Adresse { get; }
+        public Adresse Adresse { get; set; }
         [Key, Column(Order = 2)]
         public string Type { get; set; }
 

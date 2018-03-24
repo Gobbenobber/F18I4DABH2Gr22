@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HandIn21.Interfaces
 {
-    interface IKontaktRepository : IRepository<Kontakt>
+    public interface IKontaktRepository : IRepository<Kontakt>
     {
         IEnumerable<ErTilknyttet> GetKontakterWithAddresse(Adresse adresse);
     }
