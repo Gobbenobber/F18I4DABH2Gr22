@@ -29,10 +29,10 @@ namespace HandIn21
 
         [Key]
         [Column(Order = 0)]
-        public Kontakt Kontakt { get; set; }
+        public virtual Kontakt Kontakt { get; set; }
         [Key]
         [Column(Order = 1)]
-        public Adresse Adresse { get; set; }
+        public virtual Adresse Adresse { get; set; }
         [Key]
         [Column(Order = 2)]
         public string Type { get; set; }

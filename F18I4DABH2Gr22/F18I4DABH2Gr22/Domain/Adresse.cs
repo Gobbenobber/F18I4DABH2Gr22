@@ -9,7 +9,7 @@ namespace HandIn21
     {
         private readonly List<ErTilknyttet> _tilknyttedeKontakter = new List<ErTilknyttet>();
 
-        public IReadOnlyList<ErTilknyttet> TilknyttedeKontakter => _tilknyttedeKontakter;
+        public virtual ICollection<ErTilknyttet> TilknyttedeKontakter => _tilknyttedeKontakter;
 
         [Key]
         [Column(Order = 0)]
@@ -17,9 +17,9 @@ namespace HandIn21
         [Key]
         [Column(Order = 1)]
         public int Husnummer { get; set; }
-        [Key]
-        [Column(Order = 2)]
-        public By By { get; set; }
+
+
+        public virtual By By { get; set; }
 
         public Adresse(string vejnavn, int husnummer, By by)
         {

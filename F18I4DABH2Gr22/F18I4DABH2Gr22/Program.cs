@@ -13,20 +13,20 @@ namespace F18I4DABH2Gr22
         {
             //Console.WriteLine("JONAS IS RACSST");
 
-            //By by = new By
-            //{
-            //    Land = "Danmark",
-            //    Navn = "Århus C",
-            //    PostNr = "8000"
-            //};
+            By by = new By
+            {
+                Land = "Danmark",
+                Navn = "Århus C",
+                PostNr = "8000"
+            };
 
             //Adresse adresse = new Adresse("Nørregade", 42, by);
 
-            //Kontakt kontakt = new Kontakt("Patrick", "Gobbenobber", "Budhoo", adresse, new Telefonnummer(28511189, "Privat", "TDC"));
+            //Kontakt kontakt = new Kontakt("Patrick", "Gobbenobber", "Budhoo", adresse, new Telefonnummer("28511189", "Privat", "TDC"));
 
             //Console.WriteLine(kontakt);
 
-            //Adresse entilAdresse = new Adresse("Finlandsgade", 22, by);
+            Adresse entilAdresse = new Adresse("Finlandsgade", 22, by);
 
             //kontakt.TilføjAdresse("Universitet", entilAdresse);
 
@@ -34,16 +34,18 @@ namespace F18I4DABH2Gr22
 
             using (var pikfuck = new UnitOfWork(new KartotekContext()))
             {
-                var patten = pikfuck.Kontakter.SingleOrDefault(gob => gob.Fornavn == "Patrick");
 
-                if (patten != null)
+                if (pikfuck.Kontakter.GetKontakterWithAddresse(entilAdresse) is List<ErTilknyttet> kon)
                 {
-                    Console.WriteLine(patten);
+                    Console.WriteLine(kon[0].Kontakt);
                 }
+
 
             }
 
+            Console.WriteLine("Press any key to continue");
             Console.ReadLine();
+
 
         }
     }
