@@ -6,36 +6,20 @@ namespace HandIn21
 {
     public class ErTilknyttet
     {
-        protected bool Equals(ErTilknyttet other)
-        {
-            return Equals(Kontakt, other.Kontakt) && Equals(Adresse, other.Adresse);
-        }
+        [Key, Column(Order = 0)]
+        public int KontaktId { get; set; }
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((ErTilknyttet) obj);
-        }
+        [Key, Column(Order = 1)]
+        public int AdresseId { get; set; }
 
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return ((Kontakt != null ? Kontakt.GetHashCode() : 0) * 397) ^ (Adresse != null ? Adresse.GetHashCode() : 0);
-            }
-        }
-
-        [Key]
-        [Column(Order = 0)]
-        public Kontakt Kontakt { get; set; }
-        [Key]
-        [Column(Order = 1)]
-        public Adresse Adresse { get; set; }
-        [Key]
-        [Column(Order = 2)]
+        [Key, Column(Order = 2)]
         public string Type { get; set; }
+
+        [ForeignKey("KontaktId")]
+        public virtual Kontakt Kontakt { get; set; }
+
+        [ForeignKey("AdresseId")]
+        public virtual Adresse Adresse { get; set; }
 
         public ErTilknyttet(string type, Kontakt kontakt, Adresse adresse)
         {
@@ -44,14 +28,7 @@ namespace HandIn21
             Adresse = adresse;
         }
 
-        public static bool operator == (ErTilknyttet l, ErTilknyttet r)
-        {
-            return (l.Adresse == r.Adresse && l.Kontakt == r.Kontakt);
-        }
-
-        public static bool operator !=(ErTilknyttet l, ErTilknyttet r)
-        {
-            return (l.Adresse != r.Adresse || l.Kontakt != r.Kontakt);
-        }
+        protected ErTilknyttet()
+        { }
     }
 }

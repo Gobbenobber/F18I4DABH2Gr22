@@ -7,19 +7,15 @@ namespace HandIn21
 {
     public class Adresse
     {
-        private readonly List<ErTilknyttet> _tilknyttedeKontakter = new List<ErTilknyttet>();
+        public int Id { get; set; }
 
-        public IReadOnlyList<ErTilknyttet> TilknyttedeKontakter => _tilknyttedeKontakter;
+        public virtual List<ErTilknyttet> TilknyttedeKontakter { get; set; } = new List<ErTilknyttet>();
 
-        [Key]
-        [Column(Order = 0)]
         public string Vejnavn { get; set; }
-        [Key]
-        [Column(Order = 1)]
+
         public int Husnummer { get; set; }
-        [Key]
-        [Column(Order = 2)]
-        public By By { get; set; }
+
+        public virtual By By { get; set; }
 
         public Adresse(string vejnavn, int husnummer, By by)
         {
@@ -28,9 +24,12 @@ namespace HandIn21
             By = by;
         }
 
+        protected Adresse()
+        { }
+
         public void TilføjTilknytning(ErTilknyttet tilknyttet)
         {
-            _tilknyttedeKontakter.Add(tilknyttet);
+            TilknyttedeKontakter.Add(tilknyttet);
         }
 
         public override string ToString()

@@ -13,46 +13,39 @@ namespace F18I4DABH2Gr22
         {
             //Console.WriteLine("JONAS IS RACSST");
 
-            //By by = new By
-            //{
-            //    Land = "Danmark",
-            //    Navn = "Århus C",
-            //    PostNr = "8000"
-            //};
+            By by = new By
+            {
+                Land = "Danmark",
+                Navn = "Århus C",
+                PostNr = "8000"
+            };
 
-            //Adresse adresse = new Adresse("Nørregade", 42, by);
+            Adresse adresse = new Adresse("Nørregade", 42, by);
 
-            //Kontakt kontakt = new Kontakt("Patrick", "Gobbenobber", "Budhoo", adresse, new Telefonnummer(28511189, "Privat", "TDC"));
+            Kontakt kontakt = new Kontakt("Patrick", "Gobbenobber", "Budhoo", adresse, new Telefonnummer(28511189, "Privat", "TDC"));
 
             //Console.WriteLine(kontakt);
 
-            //Adresse entilAdresse = new Adresse("Finlandsgade", 22, by);
+            Adresse entilAdresse = new Adresse("Finlandsgade", 22, by);
 
-            //kontakt.TilføjAdresse("Universitet", entilAdresse);
+            kontakt.TilføjAdresse("Universitet", entilAdresse);
 
             //Console.WriteLine(kontakt);
 
             using (var pikfuck = new UnitOfWork(new KartotekContext()))
             {
-                By by = new By
-                {
-                    Land = "Danmark",
-                    Navn = "Århus C",
-                    PostNr = "8000"
-                };
+                //pikfuck.Kontakter.Add(kontakt);
+                //pikfuck.Kontakter.Add(kontakt);
 
-                Adresse adresse = new Adresse("Nørregade", 42, by);
+                var pat = pikfuck.Kontakter.GetKontaktExplicit(k => k.Fornavn == "Patrick");
 
-                Kontakt kontakt = new Kontakt("Patrick", "Gobbenobber", "Budhoo", adresse, new Telefonnummer(28511189, "Privat", "TDC"));
 
-                pikfuck.Kontakter.Add(kontakt);
+
                 pikfuck.Complete();
-
-                
-
             }
 
-            Console.ReadLine();
+            Console.WriteLine("Yes!");
+
 
         }
     }

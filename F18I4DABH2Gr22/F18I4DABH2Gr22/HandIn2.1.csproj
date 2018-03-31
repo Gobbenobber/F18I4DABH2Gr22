@@ -58,22 +58,39 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="KartotekContext.cs" />
-    <Compile Include="Migrations\201803241615399_InitialCreate.cs" />
-    <Compile Include="Migrations\201803241615399_InitialCreate.Designer.cs">
-      <DependentUpon>201803241615399_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201803311422090_InitialCreate.cs" />
+    <Compile Include="Migrations\201803311422090_InitialCreate.Designer.cs">
+      <DependentUpon>201803311422090_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803241622255_UpdateAdresse.cs" />
-    <Compile Include="Migrations\201803241622255_UpdateAdresse.Designer.cs">
-      <DependentUpon>201803241622255_UpdateAdresse.cs</DependentUpon>
+    <Compile Include="Migrations\201803311437343_reworkOfAssociation.cs" />
+    <Compile Include="Migrations\201803311437343_reworkOfAssociation.Designer.cs">
+      <DependentUpon>201803311437343_reworkOfAssociation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803241632099_UpdateKontakt.cs" />
-    <Compile Include="Migrations\201803241632099_UpdateKontakt.Designer.cs">
-      <DependentUpon>201803241632099_UpdateKontakt.cs</DependentUpon>
+    <Compile Include="Migrations\201803311500192_swagmigration.cs" />
+    <Compile Include="Migrations\201803311500192_swagmigration.Designer.cs">
+      <DependentUpon>201803311500192_swagmigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803311523262_updatedKeysOnErTilknyttet.cs" />
+    <Compile Include="Migrations\201803311523262_updatedKeysOnErTilknyttet.Designer.cs">
+      <DependentUpon>201803311523262_updatedKeysOnErTilknyttet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803311637189_cascadedeletetelefonnummer.cs" />
+    <Compile Include="Migrations\201803311637189_cascadedeletetelefonnummer.Designer.cs">
+      <DependentUpon>201803311637189_cascadedeletetelefonnummer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803311642373_rework.cs" />
+    <Compile Include="Migrations\201803311642373_rework.Designer.cs">
+      <DependentUpon>201803311642373_rework.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803311724277_goglobal.cs" />
+    <Compile Include="Migrations\201803311724277_goglobal.Designer.cs">
+      <DependentUpon>201803311724277_goglobal.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\Telefonnummer.cs" />
+    <Compile Include="Repositories\AdresseRepository.cs" />
     <Compile Include="Repositories\KontaktRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="UnitOfWork.cs" />
@@ -83,14 +100,26 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803241615399_InitialCreate.resx">
-      <DependentUpon>201803241615399_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803311422090_InitialCreate.resx">
+      <DependentUpon>201803311422090_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803241622255_UpdateAdresse.resx">
-      <DependentUpon>201803241622255_UpdateAdresse.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803311437343_reworkOfAssociation.resx">
+      <DependentUpon>201803311437343_reworkOfAssociation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803241632099_UpdateKontakt.resx">
-      <DependentUpon>201803241632099_UpdateKontakt.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803311500192_swagmigration.resx">
+      <DependentUpon>201803311500192_swagmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803311523262_updatedKeysOnErTilknyttet.resx">
+      <DependentUpon>201803311523262_updatedKeysOnErTilknyttet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803311637189_cascadedeletetelefonnummer.resx">
+      <DependentUpon>201803311637189_cascadedeletetelefonnummer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803311642373_rework.resx">
+      <DependentUpon>201803311642373_rework.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803311724277_goglobal.resx">
+      <DependentUpon>201803311724277_goglobal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

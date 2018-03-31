@@ -10,6 +10,7 @@ namespace HandIn21.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "HandIn21.KartotekContext";
         }
 
@@ -28,5 +29,7 @@ namespace HandIn21.Migrations
             //    );
             //
         }
+
+
     }
 }

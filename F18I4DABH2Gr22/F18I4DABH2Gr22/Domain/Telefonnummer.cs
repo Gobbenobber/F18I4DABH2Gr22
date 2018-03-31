@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HandIn21
 {
     public class Telefonnummer
     {
-        [Key]
+        public int Id { get; set; }
         public int Nummer { get; set; }
         public string Brug { get; set; }
         public string Teleselskab { get; set; }
@@ -15,5 +16,8 @@ namespace HandIn21
             Brug = brug;
             Teleselskab = teleselskab;
         }
+
+        protected Telefonnummer()
+        { }
     }
 }

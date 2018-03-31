@@ -16,6 +16,7 @@ namespace HandIn21
         {
             _context = context;
             Kontakter = new KontaktRepository(_context);
+            Adresser = new AdresseRepository(_context);
         }
 
         public void Dispose()
@@ -24,9 +25,12 @@ namespace HandIn21
         }
 
         public IKontaktRepository Kontakter { get; }
+        public IAdresseRepository Adresser { get; }
+
         public int Complete()
         {
            return _context.SaveChanges();
         }
+
     }
 }

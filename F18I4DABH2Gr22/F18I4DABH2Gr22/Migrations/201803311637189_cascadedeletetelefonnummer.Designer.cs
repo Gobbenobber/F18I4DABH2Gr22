@@ -7,18 +7,18 @@ namespace HandIn21.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class cascadedeletetelefonnummer : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(cascadedeletetelefonnummer));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803241615399_InitialCreate"; }
+            get { return "201803311637189_cascadedeletetelefonnummer"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target

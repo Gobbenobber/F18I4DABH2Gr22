@@ -11,5 +11,6 @@ namespace HandIn21.Interfaces
     public interface IKontaktRepository : IRepository<Kontakt>
     {
         IEnumerable<ErTilknyttet> GetKontakterWithAddresse(Adresse adresse);
+        Kontakt GetKontaktExplicit(Expression<Func<Kontakt, bool>> predicate);
     }
 }

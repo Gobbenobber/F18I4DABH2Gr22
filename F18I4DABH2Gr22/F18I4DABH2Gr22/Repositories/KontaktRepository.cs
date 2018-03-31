@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using HandIn21.Interfaces;
 
 namespace HandIn21.Repositories
@@ -14,6 +16,19 @@ namespace HandIn21.Repositories
         public IEnumerable<ErTilknyttet> GetKontakterWithAddresse(Adresse adresse)
         {
             return _context.Set<ErTilknyttet>().Where(t => t.Adresse.Equals(adresse)).ToList();
+        }
+
+        public Kontakt GetKontaktExplicit(Expression<Func<Kontakt, bool>> predicate)
+        {
+            var kontakt = _context.Set<Kontakt>().FirstOrDefault(predicate);
+
+            if (kontakt != null)
+            {
+                _context.Entry(kontakt).Collection(k => k.Telefonnumre).Load();
+                _context.Entry(kontakt).Collection(k => k.TilknyttedeAdresser).Load();
+            }
+
+            return kontakt;
         }
     }
 }

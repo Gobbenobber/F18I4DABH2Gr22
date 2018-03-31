@@ -7,13 +7,13 @@ namespace HandIn21.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class UpdateKontakt : IMigrationMetadata
+    public sealed partial class swagmigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateKontakt));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(swagmigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803241632099_UpdateKontakt"; }
+            get { return "201803311500192_swagmigration"; }
         }
         
         string IMigrationMetadata.Source

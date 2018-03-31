@@ -7,14 +7,12 @@ namespace HandIn21
 {
     public class Kontakt
     {
-        [Key]
-        public int KontaktId { get; set; }
+        public int Id { get; set; }
         public string Fornavn { get; private set; }
         public string Mellemnavn { get; private set; }
         public string Efternavn { get; private set; }
 
-        public virtual IReadOnlyList<ErTilknyttet> TilknyttedeAdresser => _tilknyttedeAdresser;
-        private readonly List<ErTilknyttet> _tilknyttedeAdresser = new List<ErTilknyttet>();
+        public List<ErTilknyttet> TilknyttedeAdresser { get; set; } = new List<ErTilknyttet>();
         public List<Telefonnummer> Telefonnumre { get; } = new List<Telefonnummer>();
         public string Email { get; set; }
 
@@ -31,10 +29,13 @@ namespace HandIn21
             TilføjAdresse(adresseType, primærAdresse);
         }
 
+        protected Kontakt()
+        { }
+
         public void TilføjAdresse(string type, Adresse adresse)
         {
             var tilknytning = new ErTilknyttet(type, this, adresse);
-            _tilknyttedeAdresser.Add(tilknytning);
+            TilknyttedeAdresser.Add(tilknytning);
             adresse.TilføjTilknytning(tilknytning);       
         }
 
@@ -50,7 +51,7 @@ namespace HandIn21
                 sb.AppendLine($"{telefonnummer.Brug}: {telefonnummer.Nummer}" + (telefonnummer.Teleselskab == "" ? "" : $" - {telefonnummer.Teleselskab}"));
             }
             sb.AppendLine("\nAdresser:");
-            foreach (var erTilknyttet in _tilknyttedeAdresser)
+            foreach (var erTilknyttet in TilknyttedeAdresser)
             {
                 sb.AppendLine($"{erTilknyttet.Type}:\n{erTilknyttet.Adresse}");
             }

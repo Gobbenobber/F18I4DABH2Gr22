@@ -18,9 +18,15 @@ namespace HandIn21
 
         public virtual DbSet<Kontakt> Kontakter { get; set; }
         public virtual DbSet<Adresse> Adresser { get; set; }
-
         public virtual DbSet<By> Byer { get; set; }
         public virtual DbSet<ErTilknyttet> ErTilknyttet { get; set; }
         public virtual DbSet<Telefonnummer> Telefonnumre { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Kontakt>()
+                .HasMany(k => k.Telefonnumre).WithRequired().WillCascadeOnDelete(true);
+
+        }
     }
 }

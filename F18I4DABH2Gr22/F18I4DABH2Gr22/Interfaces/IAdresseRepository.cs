@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HandIn21.Interfaces
 {
-    interface IAdresseRepository : IRepository<Adresse>
+    public interface IAdresseRepository : IRepository<Adresse>
     {
     }
 }
