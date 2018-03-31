@@ -86,6 +86,38 @@
     <Compile Include="Migrations\201803311724277_goglobal.Designer.cs">
       <DependentUpon>201803311724277_goglobal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803241709588_UpdatedKarotekContext1.cs" />
+    <Compile Include="Migrations\201803241709588_UpdatedKarotekContext1.Designer.cs">
+      <DependentUpon>201803241709588_UpdatedKarotekContext1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803241721009_UpdatedKontakt.cs" />
+    <Compile Include="Migrations\201803241721009_UpdatedKontakt.Designer.cs">
+      <DependentUpon>201803241721009_UpdatedKontakt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803241728113_UpdatedTelefonnummer.cs" />
+    <Compile Include="Migrations\201803241728113_UpdatedTelefonnummer.Designer.cs">
+      <DependentUpon>201803241728113_UpdatedTelefonnummer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803241738043_UpdatedToVirtual.cs" />
+    <Compile Include="Migrations\201803241738043_UpdatedToVirtual.Designer.cs">
+      <DependentUpon>201803241738043_UpdatedToVirtual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803241746377_UpdatedToVirtual1.cs" />
+    <Compile Include="Migrations\201803241746377_UpdatedToVirtual1.Designer.cs">
+      <DependentUpon>201803241746377_UpdatedToVirtual1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803241749248_AddedDefaultConstructors.cs" />
+    <Compile Include="Migrations\201803241749248_AddedDefaultConstructors.Designer.cs">
+      <DependentUpon>201803241749248_AddedDefaultConstructors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803241812494_VIRTUAL.cs" />
+    <Compile Include="Migrations\201803241812494_VIRTUAL.Designer.cs">
+      <DependentUpon>201803241812494_VIRTUAL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803261749547_removedakey.cs" />
+    <Compile Include="Migrations\201803261749547_removedakey.Designer.cs">
+      <DependentUpon>201803261749547_removedakey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -120,6 +152,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803311724277_goglobal.resx">
       <DependentUpon>201803311724277_goglobal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803241709588_UpdatedKarotekContext1.resx">
+      <DependentUpon>201803241709588_UpdatedKarotekContext1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803241721009_UpdatedKontakt.resx">
+      <DependentUpon>201803241721009_UpdatedKontakt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803241728113_UpdatedTelefonnummer.resx">
+      <DependentUpon>201803241728113_UpdatedTelefonnummer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803241738043_UpdatedToVirtual.resx">
+      <DependentUpon>201803241738043_UpdatedToVirtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803241746377_UpdatedToVirtual1.resx">
+      <DependentUpon>201803241746377_UpdatedToVirtual1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803241749248_AddedDefaultConstructors.resx">
+      <DependentUpon>201803241749248_AddedDefaultConstructors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803241812494_VIRTUAL.resx">
+      <DependentUpon>201803241812494_VIRTUAL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803261749547_removedakey.resx">
+      <DependentUpon>201803261749547_removedakey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
