@@ -28,16 +28,15 @@ namespace DocumentDb
             var db = new DocumentDbRepository<Contact>() as IDocumentDbRepository<Contact>;
             
             db.Initialize();
+            db.CreateitemAsync(contact).Wait();
+            //var result = db.GetItemsAsync(c => c.FirstName == "Jonas").Result;
 
-            var result = db.GetItemsAsync(c => c.FirstName == "Jonas");
-            result.Wait();
+            //var list = result.ToList();
 
-            var list = result.Result.ToList();
-
-            if (list.Count != 0)
-            {
-                Console.WriteLine(list[0].FirstName);
-            }
+            //if (list.Count != 0)
+            //{
+            //    Console.WriteLine(list[0].FirstName);
+            //}
 
             
             

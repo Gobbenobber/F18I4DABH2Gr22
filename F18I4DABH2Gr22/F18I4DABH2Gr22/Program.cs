@@ -40,7 +40,6 @@ namespace F18I4DABH2Gr22
                 var pat = pikfuck.Kontakter.GetKontaktExplicit(k => k.Fornavn == "Patrick");
 
 
-
                 pikfuck.Complete();
             }
 
