@@ -27,8 +27,8 @@ namespace DocumentDb
 
                 var address = new Address("Nørregade", 42, city);
 
-                var gobbenobber = new Contact("Patrick", "Gobbenobber", "Dankfar", address, new Phonenumber("28511189", "Privat", "TDC"), "Gobbenobber@Dankfar.dk");
-                gobbenobber.Id = "Gobbe";
+                var gobbenobber = new Contact("Patrick", "Gobbenobber", "Dankfar", address,
+                    new Phonenumber("28511189", "Privat", "TDC"), "Gobbenobber@Dankfar.dk") {Id = "Gobbe"};
 
                 if (db.GetItem(gobbenobber.Id) == null)
                 {

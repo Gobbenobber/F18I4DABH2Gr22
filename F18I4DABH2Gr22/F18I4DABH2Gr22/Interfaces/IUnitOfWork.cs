@@ -9,7 +9,6 @@ namespace HandIn21_Udvidet.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IKontaktRepository Kontakter { get; }
-        IAdresseRepository Adresser { get; }
         int Complete();
     }
 }

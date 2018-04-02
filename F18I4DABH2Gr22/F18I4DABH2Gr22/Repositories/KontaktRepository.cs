@@ -13,11 +13,6 @@ namespace HandIn21_Udvidet.Repositories
         {
         }
 
-        public IEnumerable<ErTilknyttet> GetKontakterWithAddresse(Adresse adresse)
-        {
-            return _context.Set<ErTilknyttet>().Where(t => t.Adresse.Equals(adresse)).ToList();
-        }
-
         public Kontakt GetKontaktExplicit(Expression<Func<Kontakt, bool>> predicate)
         {
             var kontakt = _context.Set<Kontakt>().FirstOrDefault(predicate);

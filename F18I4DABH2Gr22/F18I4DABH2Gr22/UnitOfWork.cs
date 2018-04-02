@@ -16,7 +16,6 @@ namespace HandIn21_Udvidet
         {
             _context = context;
             Kontakter = new KontaktRepository(_context);
-            Adresser = new AdresseRepository(_context);
         }
 
         public void Dispose()
@@ -25,7 +24,6 @@ namespace HandIn21_Udvidet
         }
 
         public IKontaktRepository Kontakter { get; }
-        public IAdresseRepository Adresser { get; }
 
         public int Complete()
         {
