@@ -12,31 +12,21 @@ namespace DocumentDb
     {
         static void Main(string[] args)
         {
-            var city = new City
-            {
-                Country = "Denmark",
-                Name = "Århus",
-                PostalCode = "8000"
-            };
-
-            var address = new Address("Oddervej", 61, city);
-
-            var contact = new Contact("Jonas", "Nedergaard", "Andersen", address, new Phonenumber("28189622", "Private"));
-
-            //var converted = contact.ToString();
 
             var db = new DocumentDbRepository<Contact>() as IDocumentDbRepository<Contact>;
             
             db.Initialize();
-            
+
+            var gob = db.GetItems(c => c.MiddleName == "Gobbenobber").ToList()[0];
+
+            gob.Email = "Gobbenobber@Dankfar.dk";
+
+            db.UpdateItem(gob.Id, gob);
 
 
-            
-            
 
 
-            
-            Console.ReadKey();
+
         }
     }
 }
