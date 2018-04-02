@@ -30,11 +30,8 @@ namespace DocumentDb
             db.Initialize();
             
 
-
+            db.CreateItem(contact);
             
-            
-
-
             
             Console.ReadKey();
         }
