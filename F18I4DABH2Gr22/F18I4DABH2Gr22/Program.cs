@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HandIn21;
 
-namespace F18I4DABH2Gr22
+namespace HandIn21_Udvidet
 {
     class Program
     {

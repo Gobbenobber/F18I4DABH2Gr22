@@ -4,10 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using HandIn21.Interfaces;
 using System.Data.Entity;
+using HandIn21_Udvidet.Interfaces;
 
-namespace HandIn21.Repositories
+namespace HandIn21_Udvidet.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {

@@ -1,4 +1,4 @@
-namespace HandIn21.Migrations
+namespace HandIn21_Udvidet.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

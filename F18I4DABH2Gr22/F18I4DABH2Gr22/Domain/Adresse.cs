@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace HandIn21
+namespace HandIn21_Udvidet
 {
     public class Adresse
     {

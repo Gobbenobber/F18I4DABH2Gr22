@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HandIn21
+namespace HandIn21_Udvidet
 {
     public class KartotekContext : DbContext
     {

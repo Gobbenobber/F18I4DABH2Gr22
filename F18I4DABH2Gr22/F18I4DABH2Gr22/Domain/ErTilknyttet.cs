@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HandIn21
+namespace HandIn21_Udvidet
 {
     public class ErTilknyttet
     {

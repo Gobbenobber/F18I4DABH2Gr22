@@ -6,7 +6,7 @@ using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HandIn21.Interfaces
+namespace HandIn21_Udvidet.Interfaces
 {
     public interface IKontaktRepository : IRepository<Kontakt>
     {
