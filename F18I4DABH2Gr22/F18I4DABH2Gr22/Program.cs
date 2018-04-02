@@ -6,37 +6,42 @@ namespace HandIn21_Udvidet
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("JONAS IS RACSST");
 
-            By by = new By
             {
-                Land = "Danmark",
-                Navn = "Århus C",
-                PostNr = "8000"
-            };
+                By by = new By
+                {
+                    Land = "Danmark",
+                    Navn = "Århus C",
+                    PostNr = "8000"
+                };
 
-            Adresse adresse = new Adresse("Nørregade", 42, by);
+                Adresse adresse = new Adresse("Nørregade", 42, by);
 
-            Kontakt kontakt = new Kontakt("Patrick", "Gobbenobber", "Budhoo", adresse, new Telefonnummer("28511189", "Privat", "TDC"));
+                Kontakt kontakt = new Kontakt("Patrick", "Gobbenobber", "Dankfar", adresse, new Telefonnummer("28511189", "Privat", "TDC"), "Gobbenobber@Dankfar.dk");
 
-            //Console.WriteLine(kontakt);
+                Adresse entilAdresse = new Adresse("Finlandsgade", 22, by);
 
-            Adresse entilAdresse = new Adresse("Finlandsgade", 22, by);
+                kontakt.TilføjAdresse("Universitet", entilAdresse);
 
-            kontakt.TilføjAdresse("Universitet", entilAdresse);
+                using (var uow = new UnitOfWork(new KartotekContext()))
+                {
+                    var gobbe = uow.Kontakter.GetKontaktExplicit(k => k.Fornavn == kontakt.Fornavn);
 
-            //Console.WriteLine(kontakt);
-
-            using (var pikfuck = new UnitOfWork(new KartotekContext()))
-            {
-                //pikfuck.Kontakter.Add(kontakt);
-                pikfuck.Kontakter.Add(kontakt);
-
-                //var pat = pikfuck.Kontakter.GetKontaktExplicit(k => k.Fornavn == "Patrick");
-
-
-                pikfuck.Complete();
+                    if (gobbe == null)
+                    {
+                        uow.Kontakter.Add(kontakt);
+                        uow.Complete();
+                    }
+                }
             }
+
+            using (var uow = new UnitOfWork(new KartotekContext()))
+            {
+                var gobbe = uow.Kontakter.GetKontaktExplicit(k => k.Id == 50);
+
+                //Console.ReadKey();
+            }
+
 
             Console.WriteLine("Yes!");
 

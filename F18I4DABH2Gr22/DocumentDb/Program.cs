@@ -17,11 +17,28 @@ namespace DocumentDb
             
             db.Initialize();
 
-            var gob = db.GetItems(c => c.MiddleName == "Gobbenobber").ToList()[0];
+            {
+                var city = new City()
+                {
+                    Country = "Danmark",
+                    Name = "Århus",
+                    PostalCode = "8000"
+                };
 
-            gob.Email = "Gobbenobber@Dankfar.dk";
+                var address = new Address("Nørregade", 42, city);
 
-            db.UpdateItem(gob.Id, gob);
+                var gobbenobber = new Contact("Patrick", "Gobbenobber", "Dankfar", address, new Phonenumber("28511189", "Privat", "TDC"), "Gobbenobber@Dankfar.dk");
+                gobbenobber.Id = "Gobbe";
+
+                if (db.GetItem(gobbenobber.Id) == null)
+                {
+                    db.CreateItem(gobbenobber);
+                }
+            }
+
+            var gob = db.GetItem("Gobbe");
+
+            Console.ReadKey();
 
 
 
