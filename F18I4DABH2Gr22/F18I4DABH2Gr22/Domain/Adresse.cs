@@ -3,13 +3,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace HandIn21
+namespace HandIn21_Udvidet
 {
     public class Adresse
     {
         public int Id { get; set; }
-
-        public virtual List<ErTilknyttet> TilknyttedeKontakter { get; set; } = new List<ErTilknyttet>();
 
         public string Vejnavn { get; set; }
 
@@ -26,11 +24,6 @@ namespace HandIn21
 
         protected Adresse()
         { }
-
-        public void TilføjTilknytning(ErTilknyttet tilknyttet)
-        {
-            TilknyttedeKontakter.Add(tilknyttet);
-        }
 
         public override string ToString()
         {

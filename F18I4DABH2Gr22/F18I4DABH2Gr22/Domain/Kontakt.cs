@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace HandIn21
+namespace HandIn21_Udvidet
 {
     public class Kontakt
     {
@@ -34,9 +34,8 @@ namespace HandIn21
 
         public void TilføjAdresse(string type, Adresse adresse)
         {
-            var tilknytning = new ErTilknyttet(type, this, adresse);
-            TilknyttedeAdresser.Add(tilknytning);
-            adresse.TilføjTilknytning(tilknytning);       
+            var tilknytning = new ErTilknyttet(type, adresse);
+            TilknyttedeAdresser.Add(tilknytning);    
         }
 
         public override string ToString()

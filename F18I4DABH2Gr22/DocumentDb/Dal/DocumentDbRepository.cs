@@ -51,6 +51,18 @@ namespace DocumentDb.Dal
             }
         }
 
+        public static T GetItem(string id)
+        {
+            var task = GetItemAsync(id);
+            task.Wait();
+            return task.Result;
+        }
+
+        T IDocumentDbRepository<T>.GetItem(string id)
+        {
+            return DocumentDbRepository<T>.GetItem(id);
+        }
+
         async Task<T> IDocumentDbRepository<T>.GetItemAsync(string id)
         {
             return await DocumentDbRepository<T>.GetItemAsync(id);
@@ -73,27 +85,65 @@ namespace DocumentDb.Dal
             return results;
         }
 
+        public static IEnumerable<T> GetItems(Expression<Func<T, bool>> predicate)
+        {
+            var task = GetItemsAsync(predicate);
+            task.Wait();
+            return task.Result;
+        }
+
+        IEnumerable<T> IDocumentDbRepository<T>.GetItems(Expression<Func<T, bool>> predicate)
+        {
+            return DocumentDbRepository<T>.GetItems(predicate);
+        }
+
         async Task<IEnumerable<T>> IDocumentDbRepository<T>.GetItemsAsync(Expression<Func<T, bool>> predicate)
         {
             return await DocumentDbRepository<T>.GetItemsAsync(predicate);
         }
 
-        public static async Task<Document> CreateItemAsync(T item)
+        public static T UpdateItem(string id, T item)
         {
-            return await _documentClient.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId), item);
+            var task = UpdateItemAsync(id, item);
+            task.Wait();
+            return task.Result;
         }
 
-        async Task<Document> IDocumentDbRepository<T>.CreateitemAsync(T item)
+        T IDocumentDbRepository<T>.UpdateItem(string id, T item)
+        {
+            return DocumentDbRepository<T>.UpdateItem(id, item);
+        }
+
+        public static async Task<T> CreateItemAsync(T item)
+        {
+            Document doc = await _documentClient.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId), item);
+            return (T) (dynamic) doc;
+        }
+
+        public static T CreateItem(T item)
+        {
+            var task = CreateItemAsync(item);
+            task.Wait();
+            return task.Result;
+        }
+
+        T IDocumentDbRepository<T>.CreateItem(T item)
+        {
+            return DocumentDbRepository<T>.CreateItem(item);
+        }
+
+        async Task<T> IDocumentDbRepository<T>.CreateItemAsync(T item)
         {
             return await DocumentDbRepository<T>.CreateItemAsync(item);
         }
 
-        public static async Task<Document> UpdateItemAsync(string id, T item)
+        public static async Task<T> UpdateItemAsync(string id, T item)
         {
-            return await _documentClient.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId, id), item);
+            Document doc = await _documentClient.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId, id), item);
+            return (T) (dynamic) doc;
         }
 
-        async Task<Document> IDocumentDbRepository<T>.UpdateItemAsync(string id, T item)
+        async Task<T> IDocumentDbRepository<T>.UpdateItemAsync(string id, T item)
         {
             return await DocumentDbRepository<T>.UpdateItemAsync(id, item);
         }
@@ -101,6 +151,16 @@ namespace DocumentDb.Dal
         public static async Task DeleteItemAsync(string id)
         {
             await _documentClient.DeleteDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId, id));
+        }
+
+        public static void DeleteItem(string id)
+        {
+            DeleteItemAsync(id).Wait();
+        }
+
+        void IDocumentDbRepository<T>.DeleteItem(string id)
+        {
+            DocumentDbRepository<T>.DeleteItem(id);
         }
 
         async Task IDocumentDbRepository<T>.DeleteItemAsync(string id)

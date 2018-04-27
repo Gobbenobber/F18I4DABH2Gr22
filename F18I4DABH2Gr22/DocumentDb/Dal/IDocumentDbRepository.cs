@@ -11,9 +11,14 @@ namespace DocumentDb.Dal
     {
         void Initialize();
         Task<T> GetItemAsync(string id);
+        T GetItem(string id);
         Task<IEnumerable<T>> GetItemsAsync(Expression<Func<T, bool>> predicate);
-        Task<Document> CreateitemAsync(T item);
-        Task<Document> UpdateItemAsync(string id, T item);
+        IEnumerable<T> GetItems(Expression<Func<T, bool>> predicate);
+        Task<T> UpdateItemAsync(string id, T item);
+        T UpdateItem(string id, T item);
+        Task<T> CreateItemAsync(T item);
+        T CreateItem(T item);
         Task DeleteItemAsync(string id);
+        void DeleteItem(string id);
     }
 }

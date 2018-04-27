@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HandIn21.Interfaces
+namespace HandIn21_Udvidet.Interfaces
 {
     /// <summary>
     /// This was taken from the material handed out in lecture:

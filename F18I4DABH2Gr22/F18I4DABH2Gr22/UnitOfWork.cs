@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HandIn21.Interfaces;
-using HandIn21.Repositories;
+using HandIn21_Udvidet.Interfaces;
+using HandIn21_Udvidet.Repositories;
 
-namespace HandIn21
+namespace HandIn21_Udvidet
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -16,7 +16,6 @@ namespace HandIn21
         {
             _context = context;
             Kontakter = new KontaktRepository(_context);
-            Adresser = new AdresseRepository(_context);
         }
 
         public void Dispose()
@@ -25,7 +24,6 @@ namespace HandIn21
         }
 
         public IKontaktRepository Kontakter { get; }
-        public IAdresseRepository Adresser { get; }
 
         public int Complete()
         {
