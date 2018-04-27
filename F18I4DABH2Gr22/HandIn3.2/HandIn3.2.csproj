@@ -260,7 +260,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\F18I4DABH2Gr22\HandIn2.1.csproj">
+    <ProjectReference Include="..\F18I4DABH2Gr22\HandIn2.1_Udvidet.csproj">
       <Project>{0fd3debd-e518-49d3-8256-a5fd2bc76838}</Project>
       <Name>HandIn2.1</Name>
     </ProjectReference>
