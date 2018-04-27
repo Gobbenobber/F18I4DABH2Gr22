@@ -14,9 +14,9 @@ namespace HandIn21_Udvidet.Interfaces
     /// Mosh Hamedani
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity, in TKey> where TEntity : class
     {
-        TEntity Get(object[] keyObjects);
+        TEntity Get(TKey key);
         IEnumerable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
 
@@ -28,5 +28,7 @@ namespace HandIn21_Udvidet.Interfaces
 
         void Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);
+
+        void Update(TKey key, TEntity entity);
     }
 }

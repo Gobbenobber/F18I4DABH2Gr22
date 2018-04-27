@@ -7,7 +7,7 @@ using HandIn21_Udvidet.Interfaces;
 
 namespace HandIn21_Udvidet.Repositories
 {
-    public class KontaktRepository : Repository<Kontakt>, IKontaktRepository
+    public class KontaktRepository : Repository<Kontakt, int>, IKontaktRepository
     {
         public KontaktRepository(DbContext context) : base(context)
         {

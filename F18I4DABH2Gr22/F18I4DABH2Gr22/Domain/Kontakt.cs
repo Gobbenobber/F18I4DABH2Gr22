@@ -8,12 +8,12 @@ namespace HandIn21_Udvidet
     public class Kontakt
     {
         public int Id { get; set; }
-        public string Fornavn { get; private set; }
-        public string Mellemnavn { get; private set; }
-        public string Efternavn { get; private set; }
+        public string Fornavn { get;  set; }
+        public string Mellemnavn { get;  set; }
+        public string Efternavn { get;  set; }
 
         public List<ErTilknyttet> TilknyttedeAdresser { get; set; } = new List<ErTilknyttet>();
-        public List<Telefonnummer> Telefonnumre { get; } = new List<Telefonnummer>();
+        public List<Telefonnummer> Telefonnumre { get; set; } = new List<Telefonnummer>();
         public string Email { get; set; }
 
         public Kontakt(string fornavn, string mellemnavn, string efternavn, Adresse primærAdresse, Telefonnummer telefonnummer,
@@ -29,7 +29,8 @@ namespace HandIn21_Udvidet
             TilføjAdresse(adresseType, primærAdresse);
         }
 
-        protected Kontakt()
+        
+        public Kontakt()
         { }
 
         public void TilføjAdresse(string type, Adresse adresse)

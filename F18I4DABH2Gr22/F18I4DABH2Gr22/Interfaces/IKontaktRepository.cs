@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HandIn21_Udvidet.Interfaces
 {
-    public interface IKontaktRepository : IRepository<Kontakt>
+    public interface IKontaktRepository : IRepository<Kontakt, int>
     {
         Kontakt GetKontaktExplicit(Expression<Func<Kontakt, bool>> predicate);
     }
