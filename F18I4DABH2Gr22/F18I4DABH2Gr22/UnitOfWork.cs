@@ -8,7 +8,7 @@ using HandIn21.Repositories;
 
 namespace HandIn21
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly KartotekContext _context;
 
