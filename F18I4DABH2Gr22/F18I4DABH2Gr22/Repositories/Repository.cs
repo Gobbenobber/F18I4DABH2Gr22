@@ -5,11 +5,12 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using HandIn21_Udvidet.Interfaces;
 
 namespace HandIn21_Udvidet.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity, TKey> : IRepository<TEntity, TKey> where TEntity : class
     {
         protected readonly DbContext _context;
 
@@ -17,9 +18,9 @@ namespace HandIn21_Udvidet.Repositories
         {
             _context = context;
         }
-        public TEntity Get(object[] keyObjects)
+        public TEntity Get(TKey key)
         {
-            return _context.Set<TEntity>().Find(keyObjects);
+            return _context.Set<TEntity>().Find(key);
         }
 
         public IEnumerable<TEntity> GetAll()
@@ -49,12 +50,19 @@ namespace HandIn21_Udvidet.Repositories
 
         public void Remove(TEntity entity)
         {
+            _context.Set<TEntity>().Attach(entity);
             _context.Set<TEntity>().Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
             _context.Set<TEntity>().RemoveRange(entities);
+        }
+
+        public void Update(TKey key, TEntity entity)
+        {
+            _context.Set<TEntity>().AddOrUpdate(entity);
+            //_context.Entry(entity).C
         }
     }
 }

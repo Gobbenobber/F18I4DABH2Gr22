@@ -8,7 +8,7 @@ using HandIn21_Udvidet.Repositories;
 
 namespace HandIn21_Udvidet
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly KartotekContext _context;
 
@@ -16,6 +16,7 @@ namespace HandIn21_Udvidet
         {
             _context = context;
             Kontakter = new KontaktRepository(_context);
+            Adresser = new AdresseRepository(_context);
         }
 
         public void Dispose()
@@ -24,6 +25,7 @@ namespace HandIn21_Udvidet
         }
 
         public IKontaktRepository Kontakter { get; }
+        public IAdresseRepository Adresser { get; }
 
         public int Complete()
         {
