@@ -11,30 +11,33 @@ namespace DocumentDb.Dal
 {
     public class DocumentDbRepository<T> : IDocumentDbRepository<T> where T : class
     {
-        private static readonly string DatabaseId = "ContactDb";
-        private static readonly string CollectionId = "ContactCollection";
-        private static DocumentClient _documentClient;
+        protected string NewDatabaseId;
+        protected string NewCollectionId;
 
-        public static void Initialize()
+        protected static DocumentClient DocumentClient;
+
+        protected static string AuthenticationKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+        protected static string ServiceEndpoint = "https://localhost:8081";
+
+        protected DocumentDbRepository(string databaseId, string collectionId)
         {
-            Uri serviceEndpoint = new Uri(@"https://localhost:8081");
-            string authKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
+            NewDatabaseId = databaseId ?? throw new ArgumentNullException(nameof(databaseId));
+            NewCollectionId = collectionId ?? throw new ArgumentNullException(nameof(collectionId));
 
-            _documentClient = new DocumentClient(serviceEndpoint, authKey);
-            CreateDatabaseIfNotExistsAsync().Wait();
-            CreateCollectionIfNotExistsAsync().Wait();
+            if (DocumentClient == null)
+            {
+                DocumentClient = new DocumentClient(new Uri(ServiceEndpoint), AuthenticationKey);
+            }
+
+            CreateDatabaseIfNotExists();
+            CreateCollectionIfNotExists();
         }
 
-        void IDocumentDbRepository<T>.Initialize()
-        {
-            DocumentDbRepository<T>.Initialize();
-        }
-     
-        public static async Task<T> GetItemAsync(string id)
+        public async Task<T> GetItemAsync(string id)
         {
             try
             {
-                Document document = await _documentClient.ReadDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId, id));
+                Document document = await DocumentClient.ReadDocumentAsync(UriFactory.CreateDocumentUri(NewDatabaseId, NewCollectionId, id));
 
                 return (T) (dynamic) document;
             }
@@ -51,27 +54,17 @@ namespace DocumentDb.Dal
             }
         }
 
-        public static T GetItem(string id)
+        public T GetItem(string id)
         {
             var task = GetItemAsync(id);
             task.Wait();
             return task.Result;
         }
 
-        T IDocumentDbRepository<T>.GetItem(string id)
+        public async Task<IEnumerable<T>> GetItemsAsync(Expression<Func<T, bool>> predicate)
         {
-            return DocumentDbRepository<T>.GetItem(id);
-        }
-
-        async Task<T> IDocumentDbRepository<T>.GetItemAsync(string id)
-        {
-            return await DocumentDbRepository<T>.GetItemAsync(id);
-        }
-
-        public static async Task<IEnumerable<T>> GetItemsAsync(Expression<Func<T, bool>> predicate)
-        {
-            IDocumentQuery<T> query = _documentClient.CreateDocumentQuery<T>(
-                    UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId),
+            IDocumentQuery<T> query = DocumentClient.CreateDocumentQuery<T>(
+                    UriFactory.CreateDocumentCollectionUri(NewDatabaseId, NewCollectionId),
                     new FeedOptions { MaxItemCount = -1 })
                 .Where(predicate)
                 .AsDocumentQuery();
@@ -85,102 +78,70 @@ namespace DocumentDb.Dal
             return results;
         }
 
-        public static IEnumerable<T> GetItems(Expression<Func<T, bool>> predicate)
+        public IEnumerable<T> GetItems(Expression<Func<T, bool>> predicate)
         {
             var task = GetItemsAsync(predicate);
             task.Wait();
             return task.Result;
         }
 
-        IEnumerable<T> IDocumentDbRepository<T>.GetItems(Expression<Func<T, bool>> predicate)
-        {
-            return DocumentDbRepository<T>.GetItems(predicate);
-        }
-
-        async Task<IEnumerable<T>> IDocumentDbRepository<T>.GetItemsAsync(Expression<Func<T, bool>> predicate)
-        {
-            return await DocumentDbRepository<T>.GetItemsAsync(predicate);
-        }
-
-        public static T UpdateItem(string id, T item)
+        public T UpdateItem(string id, T item)
         {
             var task = UpdateItemAsync(id, item);
             task.Wait();
             return task.Result;
         }
 
-        T IDocumentDbRepository<T>.UpdateItem(string id, T item)
+        public async Task<T> CreateItemAsync(T item)
         {
-            return DocumentDbRepository<T>.UpdateItem(id, item);
-        }
-
-        public static async Task<T> CreateItemAsync(T item)
-        {
-            Document doc = await _documentClient.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId), item);
+            Document doc = await DocumentClient.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(NewDatabaseId, NewCollectionId), item);
             return (T) (dynamic) doc;
         }
 
-        public static T CreateItem(T item)
+        public T CreateItem(T item)
         {
             var task = CreateItemAsync(item);
             task.Wait();
             return task.Result;
         }
 
-        T IDocumentDbRepository<T>.CreateItem(T item)
+        public async Task<T> UpdateItemAsync(string id, T item)
         {
-            return DocumentDbRepository<T>.CreateItem(item);
+            try
+            {
+                Document doc = await DocumentClient.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(NewDatabaseId, NewCollectionId, id), item);
+                return (T)(dynamic)doc;
+            }catch(Exception)
+            {
+                return null;
+            }
+
         }
 
-        async Task<T> IDocumentDbRepository<T>.CreateItemAsync(T item)
+
+        public async Task DeleteItemAsync(string id)
         {
-            return await DocumentDbRepository<T>.CreateItemAsync(item);
+            await DocumentClient.DeleteDocumentAsync(UriFactory.CreateDocumentUri(NewDatabaseId, NewCollectionId, id));
         }
 
-        public static async Task<T> UpdateItemAsync(string id, T item)
-        {
-            Document doc = await _documentClient.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId, id), item);
-            return (T) (dynamic) doc;
-        }
-
-        async Task<T> IDocumentDbRepository<T>.UpdateItemAsync(string id, T item)
-        {
-            return await DocumentDbRepository<T>.UpdateItemAsync(id, item);
-        }
-
-        public static async Task DeleteItemAsync(string id)
-        {
-            await _documentClient.DeleteDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId, id));
-        }
-
-        public static void DeleteItem(string id)
+        public void DeleteItem(string id)
         {
             DeleteItemAsync(id).Wait();
         }
 
-        void IDocumentDbRepository<T>.DeleteItem(string id)
-        {
-            DocumentDbRepository<T>.DeleteItem(id);
-        }
-
-        async Task IDocumentDbRepository<T>.DeleteItemAsync(string id)
-        {
-            await DocumentDbRepository<T>.DeleteItemAsync(id);
-        }
-
         #region Creation
 
-        private static async Task CreateDatabaseIfNotExistsAsync()
+        private void CreateDatabaseIfNotExists()
         {
             try
             {
-                await _documentClient.ReadDatabaseAsync(UriFactory.CreateDatabaseUri(DatabaseId));
+                DocumentClient.ReadDatabaseAsync(UriFactory.CreateDatabaseUri(NewDatabaseId)).Wait();
             }
             catch (DocumentClientException e)
             {
                 if (e.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    await _documentClient.CreateDatabaseAsync(new Database { Id = DatabaseId });
+                    DocumentClient.CreateDatabaseAsync(new Database { Id = NewDatabaseId }).Wait();
                 }
                 else
                 {
@@ -189,21 +150,21 @@ namespace DocumentDb.Dal
             }
         }
 
-        private static async Task CreateCollectionIfNotExistsAsync()
+        private void CreateCollectionIfNotExists()
         {
             try
             {
-                Uri documentCollectionLink = UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId);
-                await _documentClient.ReadDocumentCollectionAsync(documentCollectionLink);
+                Uri documentCollectionLink = UriFactory.CreateDocumentCollectionUri(NewDatabaseId, NewCollectionId);
+                DocumentClient.ReadDocumentCollectionAsync(documentCollectionLink).Wait();
             }
             catch (DocumentClientException e)
             {
                 if (e.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    await _documentClient.CreateDocumentCollectionAsync(
-                        UriFactory.CreateDatabaseUri(DatabaseId),
-                        new DocumentCollection { Id = CollectionId },
-                        new RequestOptions { OfferThroughput = 400 });
+                    DocumentClient.CreateDocumentCollectionAsync(
+                        UriFactory.CreateDatabaseUri(NewDatabaseId),
+                        new DocumentCollection { Id = NewCollectionId },
+                        new RequestOptions { OfferThroughput = 400 }).Wait();
                 }
                 else
                 {

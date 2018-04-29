@@ -13,9 +13,7 @@ namespace DocumentDb
         static void Main(string[] args)
         {
 
-            var db = new DocumentDbRepository<Contact>() as IDocumentDbRepository<Contact>;
-            
-            db.Initialize();
+            var db = new ContactRepository();
 
             {
                 var city = new City()
@@ -30,13 +28,10 @@ namespace DocumentDb
                 var gobbenobber = new Contact("Patrick", "Gobbenobber", "Dankfar", address,
                     new Phonenumber("28511189", "Privat", "TDC"), "Gobbenobber@Dankfar.dk") {Id = "Gobbe"};
 
-                if (db.GetItem(gobbenobber.Id) == null)
-                {
-                    db.CreateItem(gobbenobber);
-                }
+
+                db.UpdateItem("Gobbe", gobbenobber);
             }
 
-            var gob = db.GetItem("Gobbe");
 
             Console.ReadKey();
 

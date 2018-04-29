@@ -30,6 +30,9 @@ namespace HandIn21_Udvidet
             modelBuilder.Entity<Kontakt>().
                 HasMany(k => k.TilknyttedeAdresser).WithRequired().WillCascadeOnDelete(true);
 
+
+            
+
         }
     }
 }

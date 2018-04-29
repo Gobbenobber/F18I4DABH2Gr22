@@ -25,5 +25,19 @@ namespace HandIn21_Udvidet.Repositories
 
             return kontakt;
         }
+
+        public override void Update(int id, Kontakt kontakt)
+        {
+            var target = GetKontaktExplicit(k => k.Id == id);
+            if (target != null)
+            {
+
+                foreach (var prop in target.GetType().GetProperties())
+                {
+                    var val = prop.GetValue(kontakt);
+                    prop.SetValue(target, val);
+                }
+            }
+        }
     }
 }

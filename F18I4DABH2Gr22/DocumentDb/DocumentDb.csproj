@@ -46,7 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dal\DocumentDbRepository.cs" />
+    <Compile Include="Dal\IContactRepository.cs" />
     <Compile Include="Dal\IDocumentDbRepository.cs" />
+    <Compile Include="Dal\ContactRepository.cs" />
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Attachment.cs" />
     <Compile Include="Model\City.cs" />

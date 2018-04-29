@@ -9,7 +9,6 @@ namespace DocumentDb.Dal
 {
     public interface IDocumentDbRepository<T> where T : class
     {
-        void Initialize();
         Task<T> GetItemAsync(string id);
         T GetItem(string id);
         Task<IEnumerable<T>> GetItemsAsync(Expression<Func<T, bool>> predicate);
