@@ -10,6 +10,8 @@ namespace HandIn21_Udvidet
 
         public string Type { get; set; }
 
+        [ForeignKey("Adresse")]
+        public int AdresseId { get; set; }
         public virtual Adresse Adresse { get; set; }
 
         public ErTilknyttet(string type, Adresse adresse)

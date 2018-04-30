@@ -61,9 +61,12 @@ namespace HandIn21_Udvidet.Repositories
 
         public virtual void Update(TKey key, TEntity entity)
         {
-            var target = _context.Set<TEntity>().Find(key);
-            if (target != null)
-                _context.Entry(target).CurrentValues.SetValues(entity);
+            _context.Set<TEntity>().Add(entity);
+
+            foreach (var test in _context.ChangeTracker.Entries())
+            {
+                test.State = EntityState.Modified;
+            }
             //_context.Entry(kontakt).Collection(k => k.TilknyttedeAdresser).Load();
             //_context.Entry(entity).C
         }
