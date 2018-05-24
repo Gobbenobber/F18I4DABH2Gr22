@@ -9,8 +9,6 @@ namespace HandIn3._2.Models
         public string Vejnavn { get; set; }
 
         public int Husnummer { get; set; }
-
-        public string ByNavn { get; set; }
     }
 
     public class FullAdreseeDto

@@ -22,7 +22,7 @@ namespace HandIn3._2.Controllers
         public IEnumerable<AdresseDto> GetAdresser()
         {
             var addrs = _uow.Adresser.GetAll().Select(a =>
-                new AdresseDto { Id = a.Id, Vejnavn = a.Vejnavn, Husnummer = a.Husnummer, ByNavn = a.By.Navn });
+                new AdresseDto { Id = a.Id, Vejnavn = a.Vejnavn, Husnummer = a.Husnummer });
             return addrs;
         }
 
