@@ -30,40 +30,29 @@ namespace HandIn3._2.Controllers
             var kontakt = _uow.Kontakter.GetKontaktExplicit(k => k.Id == id);
             if (kontakt == null)
                 return NotFound();
-            return Ok(kontakt);
+            return Ok(KontaktDtoSkaber.LavEtFullKontaktDto(kontakt));
         }
 
         // POST: api/Kontakt
         [ResponseType(typeof(void))]
-        public IHttpActionResult Post([FromBody] Kontakt kontakt)
+        public IHttpActionResult Post([FromBody] FullKontaktDto kontakt)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            var obj = KontaktDtoSkaber.LavEnKontakt(kontakt);
 
-            if (_uow.Kontakter.Find(k => k.Id == kontakt.Id).FirstOrDefault() != null)
+            var result = _uow.Kontakter.Add(obj);
+
+            if (result == null)
                 return BadRequest();
 
-            foreach (var addr in kontakt.TilknyttedeAdresser)
-            {
-                if (addr.Adresse.Id != 0)
-                {
-                    var address = _uow.Adresser.SingleOrDefault(ad => ad.Id == addr.Adresse.Id);
-
-                    if (address != null)
-                    {
-                        addr.Adresse = address;
-                    }
-                }
-            }
-
-            _uow.Kontakter.Add(kontakt);
             _uow.Complete();
-            return CreatedAtRoute("DefaultApi", new {id = kontakt.Id}, kontakt);
+            return CreatedAtRoute("DefaultApi", new {id = kontakt.Id}, KontaktDtoSkaber.LavEtFullKontaktDto(result));
         }
 
         // PUT: api/Kontakt/5
-        public IHttpActionResult Put(int id, [FromBody]Kontakt value)
+        public IHttpActionResult Put(int id, [FromBody]FullKontaktDto value)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -71,7 +60,11 @@ namespace HandIn3._2.Controllers
             if (id != value.Id)
                 return BadRequest();
 
-            _uow.Kontakter.Update(id, value);
+            var obj = KontaktDtoSkaber.LavEnKontakt(value);
+            var result = _uow.Kontakter.Update(id, obj);
+
+            if (result == null)
+                return BadRequest();
 
             _uow.Complete();
             return StatusCode(HttpStatusCode.NoContent);

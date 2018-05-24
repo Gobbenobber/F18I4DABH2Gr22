@@ -22,7 +22,7 @@ namespace HandIn21_Udvidet
             By = by;
         }
 
-        protected Adresse()
+        public Adresse()
         { }
 
         public override string ToString()
