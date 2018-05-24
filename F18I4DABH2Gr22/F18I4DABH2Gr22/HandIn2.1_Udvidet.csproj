@@ -102,6 +102,10 @@
     <Compile Include="Migrations\201804271749072_deleteOnCasesTilknyttedeAdresser.Designer.cs">
       <DependentUpon>201804271749072_deleteOnCasesTilknyttedeAdresser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804301138375_modifyKey.cs" />
+    <Compile Include="Migrations\201804301138375_modifyKey.Designer.cs">
+      <DependentUpon>201804301138375_modifyKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -148,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804271749072_deleteOnCasesTilknyttedeAdresser.resx">
       <DependentUpon>201804271749072_deleteOnCasesTilknyttedeAdresser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804301138375_modifyKey.resx">
+      <DependentUpon>201804301138375_modifyKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

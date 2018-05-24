@@ -13,6 +13,8 @@ namespace HandIn21_Udvidet
 
         public int Husnummer { get; set; }
 
+        [ForeignKey("By")]
+        public int ById { get; set; }
         public virtual By By { get; set; }
 
         public Adresse(string vejnavn, int husnummer, By by)
