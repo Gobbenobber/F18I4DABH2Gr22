@@ -190,11 +190,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AdresseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KontaktController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdresseDto.cs" />
     <Compile Include="Models\FullKontaktDto.cs" />
     <Compile Include="Models\KontaktDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
