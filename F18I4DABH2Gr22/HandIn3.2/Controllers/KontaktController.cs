@@ -16,6 +16,7 @@ namespace HandIn3._2.Controllers
         private readonly IUnitOfWork _uow = new UnitOfWork(new KartotekContext());
         // GET: api/Kontakt
 
+        [ResponseType(typeof(IEnumerable<KontaktDto>))]
         public IEnumerable<KontaktDto> GetKontakter()
         {
             var kontaktDtoer = _uow.Kontakter.GetAll().Select(k =>
@@ -24,7 +25,7 @@ namespace HandIn3._2.Controllers
         }
 
         // GET: api/Kontakt/5
-        [ResponseType(typeof(Kontakt))]
+        [ResponseType(typeof(FullKontaktDto))]
         public IHttpActionResult Get(int id)
         {
             var kontakt = _uow.Kontakter.GetKontaktExplicit(k => k.Id == id);
@@ -34,7 +35,7 @@ namespace HandIn3._2.Controllers
         }
 
         // POST: api/Kontakt
-        [ResponseType(typeof(void))]
+        [ResponseType(typeof(FullKontaktDto))]
         public IHttpActionResult Post([FromBody] FullKontaktDto kontakt)
         {
             if (!ModelState.IsValid)
@@ -71,6 +72,7 @@ namespace HandIn3._2.Controllers
         }
 
         // DELETE: api/Kontakt/5
+        [ResponseType(typeof(KontaktDto))]
         public IHttpActionResult Delete(int id)
         {
             var kontakt = _uow.Kontakter.GetKontaktExplicit(k => k.Id == id);
@@ -79,7 +81,7 @@ namespace HandIn3._2.Controllers
 
             _uow.Kontakter.Remove(kontakt);
             _uow.Complete();
-            return Ok(kontakt);
+            return Ok(new KontaktDto { Id = kontakt.Id, Fornavn = kontakt.Fornavn, Efternavn = kontakt.Efternavn, Mellemnavn = kontakt.Mellemnavn });
         }
 
         protected override void Dispose(bool disposing)

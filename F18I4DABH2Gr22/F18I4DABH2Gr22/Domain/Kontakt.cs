@@ -12,8 +12,8 @@ namespace HandIn21_Udvidet
         public string Mellemnavn { get;  set; }
         public string Efternavn { get;  set; }
 
-        public virtual List<ErTilknyttet> TilknyttedeAdresser { get; set; } = new List<ErTilknyttet>();
-        public virtual List<Telefonnummer> Telefonnumre { get; set; } = new List<Telefonnummer>();
+        public List<ErTilknyttet> TilknyttedeAdresser { get; set; } = new List<ErTilknyttet>();
+        public List<Telefonnummer> Telefonnumre { get; set; } = new List<Telefonnummer>();
         public string Email { get; set; }
 
         public Kontakt(string fornavn, string mellemnavn, string efternavn, Adresse primærAdresse, Telefonnummer telefonnummer,

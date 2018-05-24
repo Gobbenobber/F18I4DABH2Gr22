@@ -65,35 +65,32 @@ namespace HandIn21_Udvidet.Repositories
             if (target == null)
                 return null;
 
-            foreach (var telefonnummer in target.Telefonnumre)
+            while (target.Telefonnumre.Count > 0)
             {
-                _context.Set<Telefonnummer>().Remove(telefonnummer);
+                _context.Entry(target.Telefonnumre[0]).State = EntityState.Deleted;
             }
 
             foreach (var telefonnummer in kontakt.Telefonnumre)
             {
+                _context.Entry(telefonnummer).State = EntityState.Added;
                 target.Telefonnumre.Add(telefonnummer);
             }
 
-            _context.Entry(target.Telefonnumre).State = EntityState.Modified;
-
-            foreach (var tilknyt in target.TilknyttedeAdresser)
+            while (target.TilknyttedeAdresser.Count > 0)
             {
-                if (kontakt.TilknyttedeAdresser.Find(t => t.Type == tilknyt.Type) == null)
-                {
-                    _context.Set<ErTilknyttet>().Remove(tilknyt);
-                }
+                _context.Entry(target.TilknyttedeAdresser[0]).State = EntityState.Deleted;
             }
 
             foreach (var tilknyt in kontakt.TilknyttedeAdresser)
             {
-                if (target.TilknyttedeAdresser.Find(t => t.Type == tilknyt.Type) == null)
+                Adresse addr = null;
+                if ((addr = _context.Set<Adresse>().Find(tilknyt.Adresse.Id)) != null)
                 {
-                    target.TilknyttedeAdresser.Add(tilknyt);
+                    tilknyt.Adresse = addr;
                 }
+                _context.Entry(tilknyt).State = EntityState.Added;
+                target.TilknyttedeAdresser.Add(tilknyt);
             }
-
-            _context.Entry(target.TilknyttedeAdresser).State = EntityState.Modified;
 
             target.Fornavn = kontakt.Fornavn;
             target.Mellemnavn = kontakt.Mellemnavn;
